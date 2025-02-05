@@ -1,17 +1,13 @@
 package bo.edu.ucb.chatbot.bl;
 
 import bo.edu.ucb.chatbot.dao.FilmDao;
+import bo.edu.ucb.chatbot.dto.Film;
 import bo.edu.ucb.chatbot.exception.SakilaException;
-import bo.edu.ucb.chatbot.models.dto.Film;
-import bo.edu.ucb.chatbot.repositories.FilmRepository;
-import bo.edu.ucb.chatbot.util.converters.FilmConverter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class FilmSearchBl {
@@ -22,12 +18,6 @@ public class FilmSearchBl {
     public FilmSearchBl(FilmDao filmDao) {
         this.filmDao = filmDao;
     }
-
-    @Autowired
-    private FilmRepository filmRepository;
-
-    @Autowired
-    private FilmConverter filmConverter;
 
     public List<Film> findByTitle(String title) {
         if (title == null || title.trim().equals("")) {
@@ -79,7 +69,7 @@ public class FilmSearchBl {
 
     private List<Film> busquedaPorTitulo(String titulo) {
         System.out.println("busqueda por titulo");
-        return filmRepository.findByTitleContaining(titulo).stream().map(filmConverter::entityToDto).collect(Collectors.toList());
+        return filmDao.findByTitle(titulo);
     }
 
     private List<Film> busquedaPorTituloActor(String titulo, String actor) {

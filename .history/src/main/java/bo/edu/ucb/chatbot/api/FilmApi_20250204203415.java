@@ -2,7 +2,7 @@ package bo.edu.ucb.chatbot.api;
 
 import bo.edu.ucb.chatbot.bl.FilmSearchBl;
 import bo.edu.ucb.chatbot.config.BotConfig;
-import bo.edu.ucb.chatbot.models.dto.Film;
+import bo.edu.ucb.chatbot.dto.Film;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public class FilmApi {
     }
 
     @GetMapping(value = "/film/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Film>> findBytTitle(@PathVariable String title) {
+    public ResponseEntity<List<Film>> findBytTitle(@PathVariable(name = "title") String title) {
         LOGGER.info("Invocando al metodo GET findBytTitle!!!!!!!!!!!");
         return new ResponseEntity<>(filmSearchBl.findByTitle(title),HttpStatus.OK);
     }

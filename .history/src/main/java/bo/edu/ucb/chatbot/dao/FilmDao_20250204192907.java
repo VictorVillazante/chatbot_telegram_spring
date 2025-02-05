@@ -1,9 +1,8 @@
 package bo.edu.ucb.chatbot.dao;
 
+import bo.edu.ucb.chatbot.dto.Film;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import bo.edu.ucb.chatbot.models.dto.Film;
 
 import javax.sql.DataSource;
 import java.sql.*;

@@ -2,9 +2,7 @@ package bo.edu.ucb.chatbot.bot;
 
 
 import bo.edu.ucb.chatbot.bl.BotFilmSearchBl;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -18,12 +16,6 @@ public class FilmBotHandler extends TelegramLongPollingBot {
 
     private BotFilmSearchBl botFilmSearchBl;
 
-    @Value(value = "${telegram.boot.username}")    
-    private String bootUserName;
-
-    @Value(value = "${telegram.boot.token}")    
-    private String bootToken;
-
     @Autowired
     public FilmBotHandler(BotFilmSearchBl botFilmSearchBl) {
         this.botFilmSearchBl = botFilmSearchBl;
@@ -31,12 +23,12 @@ public class FilmBotHandler extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return bootUserName;
+        return  "Spring037582Bot";
     }
 
     @Override
     public String getBotToken() {
-        return bootToken;
+        return "7856310948:AAG5sd5a-Bs7wk7N6AVZ6MgVoW7VJGSi_Lc";
     }
 
     @Override

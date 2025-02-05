@@ -79,7 +79,7 @@ public class FilmSearchBl {
 
     private List<Film> busquedaPorTitulo(String titulo) {
         System.out.println("busqueda por titulo");
-        return filmRepository.findByTitleContaining(titulo).stream().map(filmConverter::entityToDto).collect(Collectors.toList());
+        return filmRepository.findByTitle(titulo).stream().map(filmConverter::entityToDto).collect(Collectors.toList());
     }
 
     private List<Film> busquedaPorTituloActor(String titulo, String actor) {

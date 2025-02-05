@@ -1,9 +1,8 @@
 package bo.edu.ucb.chatbot.bl;
 
+import bo.edu.ucb.chatbot.dto.Film;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import bo.edu.ucb.chatbot.models.dto.Film;
 
 import java.util.ArrayList;
 import java.util.List;

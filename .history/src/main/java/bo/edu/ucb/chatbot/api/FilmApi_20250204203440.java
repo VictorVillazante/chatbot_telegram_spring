@@ -2,7 +2,7 @@ package bo.edu.ucb.chatbot.api;
 
 import bo.edu.ucb.chatbot.bl.FilmSearchBl;
 import bo.edu.ucb.chatbot.config.BotConfig;
-import bo.edu.ucb.chatbot.models.dto.Film;
+import bo.edu.ucb.chatbot.dto.Film;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
