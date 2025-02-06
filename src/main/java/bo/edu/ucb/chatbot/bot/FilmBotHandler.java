@@ -1,7 +1,6 @@
 package bo.edu.ucb.chatbot.bot;
 
 
-import bo.edu.ucb.chatbot.bl.BotFilmSearchBl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,11 +10,16 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import bo.edu.ucb.chatbot.services.BotFilmSearchBl;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class FilmBotHandler extends TelegramLongPollingBot {
 
+    @Autowired
     private BotFilmSearchBl botFilmSearchBl;
 
     @Value(value = "${telegram.boot.username}")    
@@ -24,10 +28,6 @@ public class FilmBotHandler extends TelegramLongPollingBot {
     @Value(value = "${telegram.boot.token}")    
     private String bootToken;
 
-    @Autowired
-    public FilmBotHandler(BotFilmSearchBl botFilmSearchBl) {
-        this.botFilmSearchBl = botFilmSearchBl;
-    }
 
     @Override
     public String getBotUsername() {
@@ -38,14 +38,14 @@ public class FilmBotHandler extends TelegramLongPollingBot {
     public String getBotToken() {
         return bootToken;
     }
-
+    Map<String,String>chats=new HashMap<>();
     @Override
     public void onUpdateReceived(Update update) {
         // We check if the update has a message and the message has text
         if (update.hasMessage() && update.getMessage().hasText()) {
-            String chatId = update.getMessage().getChatId().toString();
-            String title = update.getMessage().getText();
-            List<String> responses = botFilmSearchBl.processMessage(title);
+            String chatId = update.getMessage().getChatId().toString();     
+            String message = update.getMessage().getText();
+            List<String> responses = botFilmSearchBl.processMessage(chatId,message);
             sendMessage(chatId, responses);
         }
     }

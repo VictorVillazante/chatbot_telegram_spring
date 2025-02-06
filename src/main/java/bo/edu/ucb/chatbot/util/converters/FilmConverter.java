@@ -1,8 +1,5 @@
 package bo.edu.ucb.chatbot.util.converters;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bo.edu.ucb.chatbot.models.dto.Film;
@@ -10,9 +7,6 @@ import bo.edu.ucb.chatbot.models.entities.FilmEntity;
 
 @Component
 public class FilmConverter {
-
-    @Autowired
-    private EntityManager entityManager;
 
     public Film entityToDto(FilmEntity entity) {
         if (entity == null) {
@@ -33,17 +27,16 @@ public class FilmConverter {
 
         return dto;
     }
-    public Film dtoToEntity(Film dto) {
+    public FilmEntity dtoToEntity(Film dto) {
         if (dto == null) {
             return null;
         }
 
-        Film entity = new Film();
+        FilmEntity entity = new FilmEntity();
 
         entity.setFilmId(dto.getFilmId());
         entity.setTitle(dto.getTitle());
         entity.setDescription(dto.getDescription());
-        entity.setReleaseYear((dto.getReleaseYear() != null ? dto.getReleaseYear() : 0));
         entity.setLength(dto.getLength());
         entity.setRating(dto.getRating());
         entity.setSpecialFeatures(dto.getSpecialFeatures());
