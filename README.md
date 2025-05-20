@@ -1,11 +1,7 @@
 # 🤖 Telegram Chatbot with Spring Boot
-
 This is a **demo project** of a Telegram chatbot that responds to basic store-related questions. It's built using **Java 11** and **Spring Boot**, and connects with the **Telegram Bot API**.
-
 ---
-
 ## 🚀 Technologies Used
-
 - Java 11
 - Spring Boot
 - Telegram Bot API
